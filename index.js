@@ -11,9 +11,17 @@ const fileToDist = Path.join(pathToDist, 'index.html')
 
 const teamMemberArray = []
 
-function addEmployee () {
-    
-}
+
+Inquirer.prompt([
+    {type:"list",
+     name: "AddEmployee",
+     message: "What kind of employee would you like to add?",
+     choices: ["Manager", "Intern", "Engineer"]
+    },
+]) 
+
+
+
 
 
 function addManager () {
