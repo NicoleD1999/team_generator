@@ -3,21 +3,21 @@ const Engineer = require('../lib/engineer');
 describe('Engineer', () =>{
 
     it('Should have name, id, email, and github attributes after instantiation.', () => {
-        const finnley = new Engineer('Finnley', 10, 'Finnley@gmail.com');
+        const aidan = new Engineer('aidan', 10, 'aidan@gmail.com', 'aidan1999');
 
-        expect(finnley.name).toBe('Finnley');
-        expect(finnley.id).toBe(10);
-        expect(finnley.email).toBe('Finnley@gmail.com');
-        expect(finnley.github).toBe('Finnley1999')
+        expect(aidan.name).toBe('aidan');
+        expect(aidan.id).toBe(10);
+        expect(aidan.email).toBe('aidan@gmail.com');
+        expect(aidan.github).toBe('aidan1999')
     });
 
     it('should get the name, email, id, and role using methods', () => {
-        const kristina = new Engineer('Kristina', 33, 'Frazier@gmail.com');
+        const chrissy = new Engineer('chrissy', 33, 'Frazier@gmail.com', 'aidan1999');
 
-        expect(kristina.getName()).toBe('Kristina');
-        expect(kristina.getId()).toBe(33);
-        expect(kristina.getEmail()).toBe('Frazier@gmail.com');
-        expect(kristina.getGitHub()).toBe('Finnley1999')
-        expect(kristina.getRole()).toBe('Engineer');
+        expect(chrissy.getName()).toBe('chrissy');
+        expect(chrissy.getId()).toBe(33);
+        expect(chrissy.getEmail()).toBe('Frazier@gmail.com');
+        expect(chrissy.getGitHub()).toBe('aidan1999')
+        expect(chrissy.getRole()).toBe('Engineer');
     });
 });

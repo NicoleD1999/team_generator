@@ -3,21 +3,21 @@ const Manager = require('../lib/manager');
 describe('Manager', () =>{
 
     it('Should have name, id, email, and office number attributes after instantiation.', () => {
-        const finnley = new Engineer('Finnley', 10, 'Finnley@gmail.com');
+        const aidan = new Manager('aidan', 10, 'aidan@gmail.com', 12);
 
-        expect(finnley.name).toBe('Finnley');
-        expect(finnley.id).toBe(10);
-        expect(finnley.email).toBe('Finnley@gmail.com');
-        expect(finnley.OfficeNumber).toBe('123456789')
+        expect(aidan.name).toBe('aidan');
+        expect(aidan.id).toBe(10);
+        expect(aidan.email).toBe('aidan@gmail.com');
+        expect(aidan.OfficeNumber).toBe(12)
     });
 
     it('should get the name, email, id, and role using methods', () => {
-        const kristina = new Engineer('Kristina', 33, 'Frazier@gmail.com');
+        const chrissy = new Manager('chrissy', 33, 'Frazier@gmail.com', 12);
 
-        expect(kristina.getName()).toBe('Kristina');
-        expect(kristina.getId()).toBe(33);
-        expect(kristina.getEmail()).toBe('Frazier@gmail.com');
-        expect(kristina.getofficeNumber()).toBe('123456789')
-        expect(kristina.getRole()).toBe('Manager');
+        expect(chrissy.getName()).toBe('chrissy');
+        expect(chrissy.getId()).toBe(33);
+        expect(chrissy.getEmail()).toBe('Frazier@gmail.com');
+        expect(chrissy.officeNumber()).toBe(12)
+        expect(chrissy.getRole()).toBe('Manager');
     });
 });
