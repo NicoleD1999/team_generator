@@ -1,7 +1,7 @@
 const Engineer = require ('./lib/engineer')
 const Intern = require ('./lib/intern')
 const Manager = require ('./lib/manager')
-const Inquirer = require ('inquirer')
+const inquirer = require ('inquirer')
 const Fs = require ('fs')
 const Path = require ('path')
 const generateHTML = require ('./src/generateHTML')
@@ -12,20 +12,34 @@ const fileToDist = Path.join(pathToDist, 'index.html')
 const teamMemberArray = []
 
 
-Inquirer.prompt([
+inquirer.prompt([
     {type:"list",
      name: "AddEmployee",
      message: "What kind of employee would you like to add?",
      choices: ["Manager", "Intern", "Engineer"]
     },
-]) 
+]) .then ((answers)=>{
+    switch (answers.AddEmployee){
+        case 'Manager':
+            addManager();
+            break;
+        case 'Intern':
+            addIntern();
+            break;
+        case 'Engineer':
+            addEngineer();
+            break;
+        
+    }
+})
+
 
 
 
 
 
 function addManager () {
-    Inquirer.prompt([
+    inquirer.prompt([
         {type:"input",
          name: "ManagerName",
          message: "What is your managers name?",
@@ -50,7 +64,7 @@ function addManager () {
 }
 
 function addIntern () {
-    Inquirer.prompt([
+    inquirer.prompt([
         {type:"input",
          name: "InternName",
          message: "What is your interns name?",
@@ -75,7 +89,7 @@ function addIntern () {
 }
 
 function addEngineer () {
-    Inquirer.prompt([
+    inquirer.prompt([
         {type:"input",
          name: "EngineerName",
          message: "What is your engineers name?",
