@@ -12,11 +12,12 @@ const fileToDist = Path.join(pathToDist, 'index.html')
 const teamMemberArray = []
 
 
-inquirer.prompt([
+function runPrompt(){
+    inquirer.prompt([
     {type:"list",
      name: "AddEmployee",
      message: "What kind of employee would you like to add?",
-     choices: ["Manager", "Intern", "Engineer"]
+     choices: ["Manager", "Intern", "Engineer", "I'm Finished"]
     },
 ]) .then ((answers)=>{
     switch (answers.AddEmployee){
@@ -29,9 +30,12 @@ inquirer.prompt([
         case 'Engineer':
             addEngineer();
             break;
-        
+        case "I'm Finished":
+            renderCards();
+            break;
     }
 })
+}
 
 
 
@@ -59,7 +63,7 @@ function addManager () {
     ]).then(data =>{
         const ManagerInstance = new Manager (data.ManagerName, data.ManagerID, data.ManagerEmail, data.officeNumber)
         teamMemberArray.push(ManagerInstance)
-        renderCards()
+        runPrompt();
     })
 }
 
@@ -84,7 +88,7 @@ function addIntern () {
     ]).then(data =>{
         const InternInstance = new Intern (data.InternName, data.InternID, data.InternEmail, data.SchoolName)
         teamMemberArray.push(InternInstance)
-        renderCards()
+        runPrompt();
     })
 }
 
@@ -109,9 +113,11 @@ function addEngineer () {
     ]).then(data =>{
         const EngineerInstance = new Engineer (data.EngineerName, data.EngineerID, data.EngineerEmail, data.GitHub)
         teamMemberArray.push(EngineerInstance)
-        renderCards()
+        runPrompt();
     })
 }
+
+runPrompt();
 
 function renderCards (){
     Fs.writeFileSync(fileToDist, generateHTML(teamMemberArray), "utf-8")
